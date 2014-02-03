@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Validation Example </title>
+    <meta http-equiv="content-type"
+		content="text/html;charset=utf-8" />
+    <script type="text/javascript">
+
+    function field04Validation() {
+
+	    var inputValue = document.pizza.field04.value;
+		var monthStr = "jan feb mar apr may jun jul aug sep oct nov dec";
+		var monthValue = inputValue.substr(0,3).toLowerCase();
+		var yearValue = inputValue.substr(3,4);
+		
+		if (inputValue.length < 7)
+		{
+			alert("Date of Birth : Must be a length of 7(mmmyyyy).");
+		    document.pizza.field04.focus();
+		    return false;
+		}	
+		else if (monthStr.indexOf(monthValue) == -1)
+		{
+			alert("Date of Birth : Month must be a three letter abbreviation for month(mmm)");
+		    document.pizza.field04.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(3,4)) != inputValue.substr(3,4))
+		{
+			alert("Date of Birth : Year should be numeric.");
+		    document.pizza.field04.focus();
+		    return false;
+		}
+		else if ((2012 - yearValue) < 19)
+		{
+			alert("You should be older than 19 years of age.");
+		    document.pizza.field04.focus();
+		    return false;
+		}
+    }  // function
+
+	</script>
+</head>
+<body>
+
+    <form name='pizza' id='pizza' method='post'
+        action='https://cs.senecac.on.ca/~int222/cgi-bin/echo-c.cgi'
+		onsubmit='return field04Validation();'>
+	<p>Date of Birth: <input type="text" name="field04" size="8" maxlength="7" tabindex="4" /></p>
+	<input class="button" type="submit" value=" Submit " />
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Validation Example </title>
+    <meta http-equiv="content-type"
+		content="text/html;charset=utf-8" />
+    <script type="text/javascript">
+
+    function field09Validation() {
+
+		var specialtyArea = 0;
+		var max = document.pizza.field09.length;
+
+		for (var i = 0; i < max; i++) {
+			if (document.pizza.field09[i].checked == true) {
+				specialtyArea++;
+			}
+		}
+		
+		if (specialtyArea == 0) {
+			alert("Sauce : A selection is required.\n");
+			return false;
+		}
+		else {
+			return true;
+		}
+	}  // function
+
+	</script>
+</head>
+<body>
+
+    <form name='pizza' id='pizza' method='post'
+        action='https://cs.senecac.on.ca/~int222/cgi-bin/echo-c.cgi'
+		onsubmit='return field09Validation();'>
+	<p>Sauce
+			<input type="radio" name="field09" value="pizzaSauce" /> Pizza
+			<input type="radio" name="field09" value="bbqSauce" /> BBQ
+			<input type="radio" name="field09" value="garlicSauce" /> Garlic</p>
+	<input class="button" type="submit" value=" Submit " />
+	</form>
+	
+</body>
+</html>

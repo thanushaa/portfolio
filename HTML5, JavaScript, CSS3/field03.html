@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Validation Example </title>
+    <meta http-equiv="content-type"
+		content="text/html;charset=utf-8" />
+    <script type="text/javascript">
+	
+	function validation() {
+
+		if (!field02Validation()){
+			return false;}
+		if (!field03Validation()){
+			return false;}
+		if (!field02AndField03()){
+			return false;}
+		
+	}
+	
+	function field02Validation() {
+
+	    var inputValue = document.pizza.field02.value;
+		var capitalStr = "TG";
+		
+		if (inputValue.length < 12)
+		{
+			alert("Client Number : Must have a length of 12.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (capitalStr.indexOf(inputValue[0]) == -1)
+		{
+			alert("Client Number : Letter should be a captial T or G.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (inputValue.substr(6,1) != '-')
+		{
+			alert("Client Number : There must be Hyphen in the 7th postion.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(1,5)) != inputValue.substr(1,5))
+		{
+			alert("Client Number : Positions 2-6 must be Numeric.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(7,5)) != inputValue.substr(7,5))
+		{
+			alert("Client Number : Positions 8-12 must be Numeric.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		
+		return true;
+    }  // function
+
+
+    function field03Validation() {
+
+	    var inputValue = document.pizza.field03.value;
+
+		if (inputValue.length < 12)
+		{
+			alert("Telephone : Must be a length of 12(nnn-nnn-nnnn).");
+		    document.pizza.field03.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(0,3)) != inputValue.substr(0,3))
+		{
+			alert("Telephone : Positions 1-3 must be Numeric.");
+		    document.pizza.field03.focus();
+		    return false;
+		}
+		else if (inputValue.substr(0,3) == '000')
+		{
+			alert("Telephone : Positions 1-3 cannot be 000.");
+		    document.pizza.field03.focus();
+		    return false;
+		}
+		else if (inputValue.substr(3,1) != '-')
+		{
+			alert("Telephone : There must be Hyphen in the 7th postion.");
+		    document.pizza.field03.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(4,3)) != inputValue.substr(4,3))
+		{
+			alert("Telephone : Positions 5-17 must be Numeric.");
+		    document.pizza.field03.focus();
+		    return false;
+		}
+		else if (inputValue.substr(7,1) != '-')
+		{
+			alert("Telephone : There must be Hyphen in the 7th postion.");
+		    document.pizza.field03.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(8,4)) != inputValue.substr(8,4))
+		{
+			alert("Telephone : Positions 9-12 must be Numeric.");
+		    document.pizza.field03.focus();
+		    return false;
+		}
+		else if (inputValue.substr(4,8) == '000-0000')
+		{
+			alert("Telephone : Positions 5-12 cannot be 000-0000.");
+		    document.pizza.field03.focus();
+		    return false;
+		}
+		
+		return true;
+    }  // function
+	
+	function field02AndField03(){
+		
+		var input02Value = document.pizza.field02.value;
+		var input03Value = document.pizza.field03.value;
+		
+		if (input02Value.substr(0,1) == 'T')
+		{
+			if (input03Value.substr(0,3) != '416')
+			{
+				alert("Client Number & Telephone : Does not match.");
+				document.pizza.field03.focus();
+				return false;
+			}
+			return true;
+		}
+		else if (input02Value.substr(0,1) == 'G')
+		{
+			if (input03Value.substr(0,3) != '905')
+			{
+				alert("Client Number & Telephone : Does not match.");
+				document.pizza.field03.focus();
+				return false;
+			}
+			return true;
+		}
+			
+		return true;
+	} // function for field02AndField03
+
+	</script>
+</head>
+<body>
+
+    <form name='pizza' id='pizza' method='post'
+        action='https://cs.senecac.on.ca/~int222/cgi-bin/echo-c.cgi'
+		onsubmit='return validation();'>
+	<p>Client Number: <input id="bold" type="text" name="field02" size="13" maxlength="12" tabindex="2"/></p>
+	<p>Telephone: <input type="text" name="field03" size="13" maxlength="12" tabindex="3" /></p>
+	<input class="button" type="submit" value=" Submit " />
+	</form>
+	
+</body>
+</html>

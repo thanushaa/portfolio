@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Validation Example </title>
+    <meta http-equiv="content-type"
+		content="text/html;charset=utf-8" />
+    <script type="text/javascript">
+
+    function field02Validation() {
+
+	    var inputValue = document.pizza.field02.value;
+		var capitalStr = "TG";
+		
+		if (inputValue.length < 12)
+		{
+			alert("Client Number : Must have a length of 12.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (capitalStr.indexOf(inputValue[0]) == -1)
+		{
+			alert("Client Number : Letter should be a captial T or G.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (inputValue.substr(6,1) != '-')
+		{
+			alert("Client Number : There must be Hyphen in the 7th postion.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(1,5)) != inputValue.substr(1,5))
+		{
+			alert("Client Number : Positions 2-6 must be Numeric.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(7,5)) != inputValue.substr(7,5))
+		{
+			alert("Client Number : Positions 8-12 must be Numeric.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		
+		return true;
+    }  // function
+
+	</script>
+</head>
+<body>
+
+    <form name='pizza' id='pizza' method='post'
+        action='https://cs.senecac.on.ca/~int222/cgi-bin/echo-c.cgi'
+		onsubmit='return field02Validation();'>
+	<p>Client Number: <input id="bold" type="text" name="field02" size="13" maxlength="12" tabindex="2"/></p>
+	<input class="button" type="submit" value=" Submit " />
+	</form>
+	
+</body>
+</html>

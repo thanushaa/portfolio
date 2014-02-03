@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8" />
+
+	<title>Thaninayagam</title>
+	<link   rel='stylesheet'  type='text/css' href='sitecss.css' />
+	<script src='myscript.js' type='text/javascript'></script>
+</head>
+<body onload="FormValidation()">
+  <div id='type1'>
+   <table id='assign3'>
+    <tr>
+     <td class="top">
+      <table class="width">
+       <tr>
+        <td class="center" >
+         <form name='pizza' id='pizza' method='post'
+                action='https://cs.senecac.on.ca/~int222/cgi-bin/echo-c.cgi'
+				onsubmit='return FormValidation();'>
+
+			<table class="form">
+			<tr><td colspan="2" class="head">Pizza Order Form</td></tr>
+			<tr><td class="order">
+				<!-- A table that consists of customer information -->
+				<fieldset>
+				<legend>Customer Information</legend>					
+				<table>
+						<tr><td>Client Surname </td>
+							<td><input type="text" name="field01" tabindex="1" /></td></tr>
+						<tr><td>Client Number </td>
+							<td><input id="bold" type="text" name="field02" size="13" maxlength="12" tabindex="2"/></td></tr>
+						<tr><td>Telephone </td>
+							<td><input type="text" name="field03" size="13" maxlength="12" tabindex="3" /></td></tr>
+						<tr><td>Date of Birth </td>
+							<td><input type="text" name="field04" size="8" maxlength="7" tabindex="4" /></td></tr>
+				</table></fieldset>
+			</td>
+			
+			<td class="price">
+				<!-- A table that consists the Prices for Pizza -->
+				<fieldset>
+				<legend>Price</legend>
+				<table class="pricelist">
+					<tr><td>Small</td><td>$11.55</td></tr>
+					<tr><td>Medium</td><td>$15.25</td></tr>
+					<tr><td>Large</td><td>$22.00</td></tr>
+					<tr><td>X-Large</td><td>$25.00</td></tr>
+					<tr><td colspan="2" style="text-align: center">Plus 13% HST</td></tr>
+				</table>
+				</fieldset>
+			</td></tr>
+			
+			<tr><td class="order">
+				<!-- A table that consists the size of Pizza and type of Crust -->
+				<fieldset>
+				<legend>Pizza Size & Crust Type </legend>
+				<table>
+					<tr><td style="vertical-align: top; width: 7px">Size </td>
+						<td><select multiple="multiple" name="field05" id="scroll" size="2">
+							<optgroup label="Pizza Size">
+							<option value="small"> Small </option>
+							<option value="medium"> Medium </option>
+							<option value="large"> Large </option>
+							<option value="xLarge"> X-Large </option>
+							</optgroup>
+						</select></td>
+						<td style="vertical-align: top; text-align: center; width: 70px">Crust </td>
+						<td><select multiple="multiple" name="field06" id="scroll" size="2">
+							<option value="regCrust" selected="selected"> Regular Crust </option>
+							<option value="thinCrust"> Thin Crust </option>
+							<option value="thickCrust"> Thick Crust </option>
+							<option value="wwCrust"> Whole Wheat Crust </option>
+					</select></td></tr>
+					<tr><td style="width: 70px">Price </td>
+						<td colspan="3"><input type="text" name="field07" size="9" maxlength="8" 
+									value='' tabindex="5" disabled='disabled' /></td></tr>
+				</table>
+				</fieldset>
+				
+			</td><td class="order" rowspan="2">
+				<!-- A table for special instructions -->
+				<fieldset>
+				<legend>Special Instructions</legend><br /><br />
+				<table>
+					<tr><td style="text-align: center; width: 70px; vertical-align: top">Special Instructions</td>
+						<td><textarea name="field12" cols="28" rows="2"></textarea></td></tr>
+					<tr><td> </td>
+						<td style="text-align:right">
+							<input class="button" type="submit" value=" Submit " />  &nbsp;&nbsp;&nbsp;
+							<input class="button" type ="reset" value= " Clear " /></td></tr>
+				</table><br /><br />
+				
+				<!-- Hidden Fields -->
+				<input type="hidden" name="field13" value="N"/>
+				<input type="hidden" name="field14" value="Thanusha Thaninayagam"/>
+				<input type="hidden" name="field15" value="int222_123b04"/>
+				<input type="hidden" name="professor" value="Shi"/>
+				</fieldset>	
+			</td></tr>
+			
+			<tr><td class="order">
+				<!-- A table that consists toppings for Pizza -->
+				<fieldset>
+				<legend>Toppings</legend>
+				<table>
+					<tr><td style="text-align: left; width: 65px">Cheese </td>
+						<td><input type="radio" name="field08" value="mozzarella" 
+										checked="checked" /> Mozzarella</td>
+						<td colspan="2"><input type="radio" name="field08" value="fatReduced" /> Fat Reduced</td></tr>
+					<tr><td style="text-align: left; width: 65px">Sauce </td>
+						<td><input type="radio" name="field09" value="pizzaSauce" /> Pizza</td>
+						<td><input type="radio" name="field09" value="bbqSauce" /> BBQ</td>
+						<td><input type="radio" name="field09" value="garlicSauce" /> Garlic</td></tr>
+					<tr><td style="vertical-align:top; text-align: left; width: 65px" rowspan="2">Toppings </td>
+						<td><input type="checkbox" name="field10" value="pepperoni" /> Pepperoni</td>
+						<td><input type="checkbox" name="field10" value="sausage" /> Sausage</td>
+						<td><input type="checkbox" name="field10" value="bacon" /> Bacon </td></tr>
+					<tr><td><input type="checkbox" name="field10" value="gPepper" /> Green Pepper</td>
+						<td><input type="checkbox" name="field10" value="muchrooms" /> Mushrooms</td>
+						<td><input type="checkbox" name="field10" value="pineapple" /> Pineapple</td></tr>
+				</table>
+				</fieldset>
+			</td></tr>
+			</table>
+         </form>
+        </td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+   <table class="width">
+    <tr>
+     <td><a href='honesty.html'>Honesty</a>&nbsp; &nbsp; <a href='myscript.js'>JavaScript</a></td>
+
+     <td>
+      <script type='text/javascript'>
+       //<![CDATA[
+        dt=new Date(document.lastModified);
+        document.write("<span id='lastupdate'>This page was last modified on "+dt.toLocaleString() + "</span>")
+       //]]>
+      </script>
+     </td>
+     <td><a href='sitecss.css'>CSS</a>&nbsp; &nbsp; <a href='../'>My Zenit Account</a></td>
+    </tr>
+   </table>
+  </div>
+</body>
+</html>

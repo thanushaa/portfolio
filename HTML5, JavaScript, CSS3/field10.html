@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Validation Example </title>
+    <meta http-equiv="content-type"
+		content="text/html;charset=utf-8" />
+    <script type="text/javascript">
+
+    function field10Validation() {
+
+		var specialtyArea = 0;
+
+		for (var i = 0; i < document.pizza.field10.length; i++) 
+		{
+			if (document.pizza.field10[i].checked == true) 
+			{
+				specialtyArea++;
+			}
+		}
+		
+		if (specialtyArea == 0)
+		{
+			alert("Toppings : A selection is required.\n");
+			return false;
+		}
+		else if (specialtyArea > 1)
+		{	
+			alert("Toppings : Only one topping can be checked.\n");
+			return false;
+		}
+		else {
+			return true;
+		}
+	}  // function
+
+	</script>
+</head>
+<body>
+
+    <form name='pizza' id='pizza' method='post'
+        action='https://cs.senecac.on.ca/~int222/cgi-bin/echo-c.cgi'
+		onsubmit='return field10Validation();'>
+	<p>Toppings
+			<input type="checkbox" name="field10" value="pepperoni" /> Pepperoni
+			<input type="checkbox" name="field10" value="sausage" /> Sausage
+			<input type="checkbox" name="field10" value="bacon" /> Bacon
+			<input type="checkbox" name="field10" value="gPepper" /> Green Pepper
+			<input type="checkbox" name="field10" value="muchrooms" /> Mushrooms
+			<input type="checkbox" name="field10" value="pineapple" /> Pineapple</p>
+	<input class="button" type="submit" value=" Submit " />
+	</form>
+	
+</body>
+</html>

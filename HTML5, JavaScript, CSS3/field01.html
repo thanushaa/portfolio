@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+- alphabetic characters lower case (a-z) upper case (A-Z) 
+- one (1) apostrophe (‘) 
+- one (1) hyphen (-) 
+- Must have at least 1 alphabetic characters (a-z) (A-Z) 
+	when there are no errors, follow the rules in 
+	sub-section 2.1 (“If there are no errors”) 
+-->
+
+<head>
+    <title> Validation Example </title>
+    <meta http-equiv="content-type"
+		content="text/html;charset=utf-8" />
+    <script type="text/javascript">
+	
+	function validation() {
+
+		if (!field01Validation()){
+			return false;}
+		if (!field02Validation()){
+			return false;}
+		
+	}
+
+
+	function field01Validation() {
+
+        var alphString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		var countAlpha = 0;
+		var countApostrophe = 0;
+		var countHyphen = 0;
+
+        var inputValue = document.pizza.field01.value;
+
+		// Check if the text field is empty
+        if (inputValue.length < 1)
+        {      /* check the length     */
+		   alert("Client Surname : Please re-enter a name (at least 1 alphabetic character).");
+		   document.pizza.field01.focus();
+		   return false;
+        }
+        else
+	    {
+			for (var i = 0; i < inputValue.length; i++)
+			{
+				var passAlpha = false;
+				// check if the character is a letter
+				if (alphString.indexOf(inputValue.substr(i,1))!= -1)
+				{
+					countAlpha++
+				}
+				// check if the character is a hypen
+				else if (inputValue.substr(i,1) == "-")
+				{
+					countHyphen++;
+				}
+				// check if the character is a apostrophe
+				else if (inputValue.substr(i,1) == "'")
+				{
+					countApostrohpe++;
+				}
+					
+			}  // for
+        } // else
+
+		// Check for errors
+		if (countAlpha < 1)
+		{
+			alert("Client Surname : Please re-enter a name with at least one Alphabet letter.");
+			document.pizza.field01.focus();
+			return false;
+		}	
+		else if (countHyphen > 1)
+        {
+		    alert("Client Surname : Only one Hyphen allowed.");
+		    document.pizza.field01.focus();
+		    return false;
+		}
+		else if (countApostrophe > 1)
+		{
+			alert("Client Surname : Only one Apostrophe allowed.");
+		    document.pizza.field01.focus();
+		    return false;
+		}
+        else
+        {  
+			document.pizza.field01.value = inputValue.substr(0,1).toUpperCase() + inputValue.substr(1,inputValue.length-1).toLowerCase();
+			return true; 
+		}
+    }  // function
+
+	
+	function field02Validation() {
+
+	    var inputValue = document.pizza.field02.value;
+		var capitalStr = "TG";
+		
+		if (inputValue.length < 12)
+		{
+			alert("Client Number : Must have a length of 12.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (capitalStr.indexOf(inputValue[0]) == -1)
+		{
+			alert("Client Number : Letter should be a captial T or G.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (inputValue.substr(6,1) != '-')
+		{
+			alert("Client Number : There must be Hyphen in the 7th postion.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(1,5)) != inputValue.substr(1,5))
+		{
+			alert("Client Number : Positions 2-6 must be Numeric.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		else if (parseInt(inputValue.substr(7,5)) != inputValue.substr(7,5))
+		{
+			alert("Client Number : Positions 8-12 must be Numeric.");
+		    document.pizza.field02.focus();
+		    return false;
+		}
+		
+		return true;
+    }  // function
+	
+	
+	</script>
+</head>
+<body>
+
+
+    <form name='pizza' id='pizza' method='post'
+        action='https://cs.senecac.on.ca/~int222/cgi-bin/echo-c.cgi'
+		onsubmit='return validation();'>
+	<p>Client Surname: <input type="text" name="field01" tabindex="1" /></p>
+	<p>Client Number: <input id="bold" type="text" name="field02" size="13" maxlength="12" tabindex="2"/></p>
+	<input class="button" type="submit" value=" Submit " />
+	</form>
+</body>
+</html>
